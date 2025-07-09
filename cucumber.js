@@ -5,6 +5,7 @@ module.exports = {
     '--require tests/step_definitions/**/*.ts',
     '--require tests/support/**/*.ts',
     '--format progress',
+    '--format summary',
     '--format json:reports/cucumber-report.json'
   ].join(' ')
 };
