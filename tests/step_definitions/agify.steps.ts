@@ -8,6 +8,7 @@ import {
   AgifyResponse,
   AgifyErrorResponse
 } from '../support/api/agify';
+import { logger } from '../support/logger';
 
 let response: ApiResponse;
 
@@ -16,6 +17,7 @@ Given('I have the name {string}', function (inputName: string) {
     this.name = inputName;
     this.country = undefined;
     this.names = undefined;
+    logger.debug({ name: inputName }, 'Set single name');
 });
 
 Given('I have no name parameter', function () {
@@ -42,12 +44,14 @@ Given('I have multiple names {string}', function (namesList: string) {
 
 // When steps
 When('I send a GET request to the Agify API', async function () {
+    logger.debug({ name: this.name, country: this.country }, 'Sending Agify request');
     if (this.name !== undefined) {
         response = await getEstimatedAge(this.name, this.country);
     } else {
         // For testing missing name parameter
         response = await makeRawRequest('https://api.agify.io');
     }
+    logger.debug({ status: response.status, data: response.data }, 'Received response');
 });
 
 When('I send a batch GET request to the Agify API', async function () {
@@ -70,6 +74,7 @@ Then('the response should contain a name {string}', function (expectedName: stri
 });
 
 Then('the response should contain an age', function () {
+    logger.debug({ data: response.data }, 'Validating age field');
     expect(response.data).to.have.property('age');
     const age = (response.data as AgifyResponse).age;
     expect(age).to.satisfy((value: any) => value === null || typeof value === 'number');
