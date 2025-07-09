@@ -4,8 +4,8 @@ module.exports = {
     '--require-module ts-node/register',
     '--require tests/step_definitions/**/*.ts',
     '--require tests/support/**/*.ts',
-    '--format progress',
-    '--format summary',
+    '--format progress-bar',
+    '--format @cucumber/pretty-formatter',
     '--format json:reports/cucumber-report.json'
   ].join(' ')
 };
