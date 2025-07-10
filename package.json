@@ -6,7 +6,7 @@
   "scripts": {
     "test": "cucumber-js",
     "test:mock": "cross-env USE_MOCK=true cucumber-js",
-    "test:report": "cucumber-js --format progress-bar --format @cucumber/pretty-formatter --format json:reports/cucumber-report.json --format html:reports/cucumber-report.html",
+    "test:report": "cross-env USE_MOCK=true cucumber-js --format progress-bar --format @cucumber/pretty-formatter --format json:reports/cucumber-report.json --format html:reports/cucumber-report.html",
     "prepublishOnly": "npm run build",
     "build": "tsc"
   },
