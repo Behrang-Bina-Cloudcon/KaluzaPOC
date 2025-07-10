@@ -9,6 +9,15 @@ import {
   AgifyErrorResponse
 } from '../support/api/agify';
 import { logger } from '../support/logger';
+import { 
+  mockValidName,
+  mockNameWithNumbers,
+  mockMissingName,
+  mockEmptyName,
+  mockNameWithCountry,
+  mockBatchRequest,
+  mockRateLimitHeaders
+} from '../support/mocks/agifyApi.mock';
 
 let response: ApiResponse;
 
@@ -18,28 +27,55 @@ Given('I have the name {string}', function (inputName: string) {
     this.country = undefined;
     this.names = undefined;
     logger.debug({ name: inputName }, 'Set single name');
+
+    if (process.env.USE_MOCK === 'true') {
+      switch (inputName) {
+        case 'michael':
+          // This will be handled in conjunction with the country step
+          if (!this.country) mockValidName();
+          break;
+        case 'john123':
+          mockNameWithNumbers();
+          break;
+        case 'test':
+          mockRateLimitHeaders();
+          break;
+      }
+    }
 });
 
 Given('I have no name parameter', function () {
     this.name = undefined;
     this.country = undefined;
     this.names = undefined;
+    if (process.env.USE_MOCK === 'true') {
+      mockMissingName();
+    }
 });
 
 Given('I have an empty name {string}', function (inputName: string) {
     this.name = inputName;
     this.country = undefined;
     this.names = undefined;
+    if (process.env.USE_MOCK === 'true') {
+      mockEmptyName();
+    }
 });
 
 Given('I specify country {string}', function (country: string) {
     this.country = country;
+    if (process.env.USE_MOCK === 'true' && this.name === 'michael') {
+      mockNameWithCountry();
+    }
 });
 
 Given('I have multiple names {string}', function (namesList: string) {
     this.names = namesList.split(',').map(name => name.trim());
     this.name = undefined;
     this.country = undefined;
+    if (process.env.USE_MOCK === 'true') {
+      mockBatchRequest();
+    }
 });
 
 // When steps
