@@ -9,7 +9,7 @@ import {
   AgifyResponse,
   AgifyErrorResponse
 } from '../support/api/agify';
-// We no longer need the global logger
+import { logger } from '../support/logger';
 import { 
   mockValidName,
   mockNameWithNumbers,
@@ -33,7 +33,7 @@ Given('I have the name {string}', function (inputName: string) {
     this.name = inputName;
     this.country = undefined;
     this.names = undefined;
-    this.logger.debug('Set single name', { name: inputName });
+    logger.debug({ name: inputName }, 'Set single name');
 
     if (process.env.USE_MOCK === 'true') {
       switch (inputName) {
@@ -127,24 +127,24 @@ Given('I have exceeded my request limit', function () {
 
 // When steps
 When('I send a GET request to the Agify API', async function () {
-    this.logger.debug('Sending Agify request', { name: this.name, country: this.country, apiKey: this.apiKey });
+    logger.debug({ name: this.name, country: this.country, apiKey: this.apiKey }, 'Sending Agify request');
     if (this.name !== undefined) {
         response = await getEstimatedAge(this.name, this.country, this.apiKey);
     } else {
         // For testing missing name parameter
         response = await makeRawRequest('https://api.agify.io');
     }
-    this.logger.debug('Received response', { status: response.status, data: response.data });
+    logger.debug({ status: response.status, data: response.data }, 'Received response');
 });
 
 When('I send a batch GET request to the Agify API', async function () {
-    this.logger.debug('Sending batch Agify request', { names: this.names, country: this.country });
+    logger.debug({ names: this.names, country: this.country }, 'Sending batch Agify request');
     if (this.names && Array.isArray(this.names)) {
         response = await getEstimatedAgeForMultipleNames(this.names, this.country);
     } else {
         throw new Error('No names array provided for batch request');
     }
-    this.logger.debug('Received batch response', { status: response.status, data: response.data });
+    logger.debug({ status: response.status, data: response.data }, 'Received batch response');
 });
 
 // Then steps for status
@@ -159,7 +159,7 @@ Then('the response should contain a name {string}', function (expectedName: stri
 });
 
 Then('the response should contain an age', function () {
-    this.logger.debug('Validating age field', { data: response.data });
+    logger.debug({ data: response.data }, 'Validating age field');
     expect(response.data).to.have.property('age');
     const age = (response.data as AgifyResponse).age;
     expect(age).to.satisfy((value: any) => value === null || typeof value === 'number');

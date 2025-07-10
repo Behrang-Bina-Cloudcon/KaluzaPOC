@@ -22,12 +22,10 @@ if (process.env.USE_MOCK === 'true') {
     }
   });
 
-  // Before each scenario, clean up any existing mock interceptions
   Before(function () {
     nock.cleanAll();
   });
   
-  // After all tests are done, restore the HTTP interceptor
   AfterAll(function() {
     nock.cleanAll();
     nock.restore();
