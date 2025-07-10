@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "cucumber-js",
-    "test:mock": "SET USE_MOCK=true&& cucumber-js",
+    "test:mock": "cross-env USE_MOCK=true cucumber-js",
     "test:report": "cucumber-js --format progress-bar --format @cucumber/pretty-formatter --format json:reports/cucumber-report.json --format html:reports/cucumber-report.html",
     "prepublishOnly": "npm run build",
     "build": "tsc"
@@ -28,6 +28,7 @@
     "@types/chai": "^4.3.20",
     "@types/node": "^24.0.10",
     "chai": "^4.5.0",
+    "cross-env": "^7.0.3",
     "nock": "^13.5.6",
     "pino": "^9.5.0",
     "pino-pretty": "^13.0.0",

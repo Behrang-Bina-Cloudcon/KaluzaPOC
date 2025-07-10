@@ -7,7 +7,7 @@ on:
     branches: [ main, develop ]
 
 jobs:
-  test:
+  api_test_automation:
     runs-on: ubuntu-latest
     
     steps:
