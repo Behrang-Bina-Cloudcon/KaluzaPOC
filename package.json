@@ -6,7 +6,8 @@
   "scripts": {
     "test": "cucumber-js",
     "test:mock": "SET USE_MOCK=true&& cucumber-js",
-    "test:report": "cucumber-js --format progress-bar --format @cucumber/pretty-formatter --format json:reports/cucumber-report.json --format html:reports/cucumber-report.html",
+    "test:allure": "SET USE_MOCK=true&& cucumber-js",
+    "report:allure": "allure generate allure-results --clean -o allure-report && allure open allure-report",
     "prepublishOnly": "npm run build",
     "build": "tsc"
   },
@@ -29,6 +30,8 @@
   },
   "homepage": "https://github.com/BehrangBina/KaluzaPOC#readme",
   "devDependencies": {
+    "allure-commandline": "^2.29.0",
+    "allure-cucumberjs": "^2.15.1",
     "@cucumber/cucumber": "^11.3.0",
     "@cucumber/pretty-formatter": "^1.0.1",
     "@types/chai": "^4.3.20",
