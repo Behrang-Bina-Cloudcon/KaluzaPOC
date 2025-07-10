@@ -1,5 +1,6 @@
 import { Given, When, Then } from '@cucumber/cucumber';
 import { expect } from 'chai';
+import nock from 'nock';
 import { 
   getEstimatedAge, 
   getEstimatedAgeForMultipleNames, 
@@ -16,7 +17,12 @@ import {
   mockEmptyName,
   mockNameWithCountry,
   mockBatchRequest,
-  mockRateLimitHeaders
+  mockRateLimitHeaders,
+  mockInvalidApiKey,
+  mockBatchTooLarge,
+  mockEmptyBatchRequest,
+  mockNameWithDiacritics,
+  mockRateLimitExceeded
 } from '../support/mocks/agifyApi.mock';
 
 let response: ApiResponse;
@@ -38,7 +44,11 @@ Given('I have the name {string}', function (inputName: string) {
           mockNameWithNumbers();
           break;
         case 'test':
-          mockRateLimitHeaders();
+          // This is handled by a separate 'exceeded limit' step
+          if (!this.limitExceeded) mockRateLimitHeaders();
+          break;
+        case 'René':
+          mockNameWithDiacritics();
           break;
       }
     }
@@ -78,11 +88,43 @@ Given('I have multiple names {string}', function (namesList: string) {
     }
 });
 
+// --- New Given Steps ---
+
+Given('I use an invalid API key {string}', function (apiKey: string) {
+  this.apiKey = apiKey;
+  if (process.env.USE_MOCK === 'true') {
+    mockInvalidApiKey();
+  }
+});
+
+Given('I have a list of 11 names', function () {
+  this.names = Array.from({ length: 11 }, (_, i) => `name${i}`);
+  if (process.env.USE_MOCK === 'true') {
+    mockBatchTooLarge();
+  }
+});
+
+Given('I have an empty list of names', function () {
+  this.names = [];
+  if (process.env.USE_MOCK === 'true') {
+    mockMissingName(); // Use the correct, existing mock
+  }
+});
+
+Given('I have exceeded my request limit', function () {
+  this.limitExceeded = true;
+  if (process.env.USE_MOCK === 'true') {
+    nock.cleanAll(); // Clean up previous mocks
+    mockRateLimitExceeded();
+  }
+});
+
+
 // When steps
 When('I send a GET request to the Agify API', async function () {
-    logger.debug({ name: this.name, country: this.country }, 'Sending Agify request');
+    logger.debug({ name: this.name, country: this.country, apiKey: this.apiKey }, 'Sending Agify request');
     if (this.name !== undefined) {
-        response = await getEstimatedAge(this.name, this.country);
+        response = await getEstimatedAge(this.name, this.country, this.apiKey);
     } else {
         // For testing missing name parameter
         response = await makeRawRequest('https://api.agify.io');

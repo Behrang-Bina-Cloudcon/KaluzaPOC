@@ -71,3 +71,27 @@ export function mockRateLimitHeaders() {
       }
     );
 } 
+
+// --- Mocks for New Scenarios ---
+
+export function mockInvalidApiKey() {
+  return mockError({ name: 'test', apikey: 'INVALID_KEY' }, 'Invalid API key', 401);
+}
+
+export function mockBatchTooLarge() {
+  const names = Array.from({ length: 11 }, (_, i) => `name${i}`);
+  const query = { 'name[]': names };
+  return mockError(query, "Invalid 'name' parameter", 422);
+}
+
+export function mockEmptyBatchRequest() {
+  return mockError({ 'name[]': [] }, "Missing 'name' parameter", 422);
+}
+
+export function mockNameWithDiacritics() {
+  return mockSuccess({ name: 'René' }, { name: 'René', age: 64, count: 123 });
+}
+
+export function mockRateLimitExceeded() {
+  return mockError({ name: 'test' }, 'Request limit reached', 429);
+} 
