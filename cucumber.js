@@ -4,8 +4,7 @@ module.exports = {
     '--require-module ts-node/register',
     '--require tests/step_definitions/**/*.ts',
     '--require tests/support/**/*.ts',
-    '--format progress-bar',
-    '--format @cucumber/pretty-formatter',
-    '--format json:reports/cucumber-report.json'
+    '--format progress-bar', // Keep this for nice console output
+    '--format allure-cucumberjs' // Use Allure as the main reporter
   ].join(' ')
 };
