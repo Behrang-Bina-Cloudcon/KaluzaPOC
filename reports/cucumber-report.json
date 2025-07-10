@@ -1,0 +1,1154 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "estimate-age-by-name-using-agify-api;valid-name-returns-estimated-age",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Valid name returns estimated age",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 375999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I have the name \"michael\"",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3063099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "I send a GET request to the Agify API",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:147"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1015181600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:161"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 522899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "the response should contain a name",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:166"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 724400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "the response should contain an age",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:173"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 311799
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "estimate-age-by-name-using-agify-api;name-with-numbers-returns-an-error-or-default",
+        "keyword": "Scenario",
+        "line": 10,
+        "name": "Name with numbers returns an error or default",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 40599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "I have the name \"john123\"",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 662299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 12,
+            "name": "I send a GET request to the Agify API",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:147"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 246422099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:161"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 193800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "the age should be null or a number",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:187"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 871000
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "estimate-age-by-name-using-agify-api;name-with-diacritics-is-handled-correctly",
+        "keyword": "Scenario",
+        "line": 16,
+        "name": "Name with diacritics is handled correctly",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 276000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 17,
+            "name": "I have the name \"rené\"",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 697799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 18,
+            "name": "I send a GET request to the Agify API",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:147"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 245085200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:161"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 720299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 20,
+            "name": "the response should contain a name",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:166"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 811700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 21,
+            "name": "the response should contain an age",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:173"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 228399
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "estimate-age-by-name-using-agify-api;name-with-country-localization",
+        "keyword": "Scenario",
+        "line": 23,
+        "name": "Name with country localization",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 49599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 24,
+            "name": "I have the name \"peter\"",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 154299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 25,
+            "name": "I have the country \"US\"",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:85"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 963300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 26,
+            "name": "I send a GET request to the Agify API",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:147"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 251828300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 27,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:161"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 789499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 28,
+            "name": "the response should contain a name",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:166"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 840299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 29,
+            "name": "the response should contain an age",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:173"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 462099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 30,
+            "name": "the response should contain a country",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:180"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 288999
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "estimate-age-by-name-using-agify-api;batch-request-for-multiple-names",
+        "keyword": "Scenario",
+        "line": 32,
+        "name": "Batch request for multiple names",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 114700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 33,
+            "name": "I have the names \"alice,bob\"",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:70"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1523400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 34,
+            "name": "I send a GET request to the Agify API",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:147"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 248776200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 35,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:161"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 878799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 36,
+            "name": "the response should be an array",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:193"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 903400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 37,
+            "name": "each item should contain a name and age",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:198"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 928699
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "estimate-age-by-name-using-agify-api;empty-name-parameter-returns-error",
+        "keyword": "Scenario",
+        "line": 39,
+        "name": "Empty name parameter returns error",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 58700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 40,
+            "name": "I have no name",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:90"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 145700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 41,
+            "name": "I send a GET request to the Agify API",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:147"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 244134000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "the response status should be 422",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:161"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 175700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 43,
+            "name": "the response should contain error \"Missing 'name' parameter\"",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:222"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 197600
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "estimate-age-by-name-using-agify-api;exceeding-rate-limit-returns-error",
+        "keyword": "Scenario",
+        "line": 45,
+        "name": "Exceeding rate limit returns error",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 53400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 46,
+            "name": "I have the name \"test\" for rate limit testing",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:137"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 205500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 47,
+            "name": "I send a GET request to the Agify API",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:147"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 242069200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 48,
+            "name": "the response status should be 429",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:161"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 2004500,
+              "error_message": "AssertionError\n    + expected - actual\n\n    -200\n    +429\n\n    at CustomWorld.<anonymous> (C:\\Work\\Training\\KaluzaPOC\\tests\\step_definitions\\agify.steps.ts:163:32)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 49,
+            "name": "the response should contain error \"Request limit reached\"",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:222"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "estimate-age-by-name-using-agify-api;response-includes-rate-limit-headers",
+        "keyword": "Scenario",
+        "line": 51,
+        "name": "Response includes rate limit headers",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 167099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 52,
+            "name": "I have the name \"test\"",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 660399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 53,
+            "name": "I send a GET request to the Agify API",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:147"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 237033499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 54,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:161"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 144199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 55,
+            "name": "the response should include rate limit headers",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:229"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 315499
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "estimate-age-by-name-using-agify-api;invalid-api-key-returns-error",
+        "keyword": "Scenario",
+        "line": 60,
+        "name": "Invalid API key returns error",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 142800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 61,
+            "name": "I have the name \"test\"",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 934400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "I have an invalid API key \"INVALID_KEY\"",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:100"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1252400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 63,
+            "name": "I send a GET request to the Agify API",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:147"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 241897200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 64,
+            "name": "the response status should be 401",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:161"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 725400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 65,
+            "name": "the response should contain error \"Invalid API key\"",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:222"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 545000
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "estimate-age-by-name-using-agify-api;batch-request-with-too-many-names",
+        "keyword": "Scenario",
+        "line": 68,
+        "name": "Batch request with too many names",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 125500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 69,
+            "name": "I have too many names in batch",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:109"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 317800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 70,
+            "name": "I send a GET request to the Agify API",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:147"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 237303600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 71,
+            "name": "the response status should be 422",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:161"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 1729499,
+              "error_message": "AssertionError\n    + expected - actual\n\n    -200\n    +422\n\n    at CustomWorld.<anonymous> (C:\\Work\\Training\\KaluzaPOC\\tests\\step_definitions\\agify.steps.ts:163:32)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 72,
+            "name": "the response should contain error \"Invalid 'name' parameter\"",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:222"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "estimate-age-by-name-using-agify-api;empty-list-of-names",
+        "keyword": "Scenario",
+        "line": 74,
+        "name": "Empty list of names",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 98199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 75,
+            "name": "I have an empty list of names",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:118"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 227200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 76,
+            "name": "I send a GET request to the Agify API",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:147"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 242293100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 77,
+            "name": "the response status should be 422",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:161"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 155499,
+              "error_message": "AssertionError\n    + expected - actual\n\n    -200\n    +422\n\n    at CustomWorld.<anonymous> (C:\\Work\\Training\\KaluzaPOC\\tests\\step_definitions\\agify.steps.ts:163:32)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 78,
+            "name": "the response should contain error \"Invalid 'name' parameter\"",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:222"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "estimate-age-by-name-using-agify-api;name-with-special-characters",
+        "keyword": "Scenario",
+        "line": 81,
+        "name": "Name with special characters",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 44499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 82,
+            "name": "I have the name \"josé\"",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 99400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 83,
+            "name": "I send a GET request to the Agify API",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:147"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 246924899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 84,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:161"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 206299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 85,
+            "name": "the response should contain a name",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:166"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 413399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 86,
+            "name": "the response should contain an age",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:173"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 190499
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "estimate-age-by-name-using-agify-api;very-long-name-parameter",
+        "keyword": "Scenario",
+        "line": 88,
+        "name": "Very long name parameter",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 141499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 89,
+            "name": "I have a very long name",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:127"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 864000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 90,
+            "name": "I send a GET request to the Agify API",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:147"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 342473600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 91,
+            "name": "the response status should be 422",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:161"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 201999,
+              "error_message": "AssertionError\n    + expected - actual\n\n    -200\n    +422\n\n    at CustomWorld.<anonymous> (C:\\Work\\Training\\KaluzaPOC\\tests\\step_definitions\\agify.steps.ts:163:32)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 92,
+            "name": "the response should contain error \"Invalid 'name' parameter\"",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:222"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "estimate-age-by-name-using-agify-api;batch-request-with-country-localization",
+        "keyword": "Scenario",
+        "line": 95,
+        "name": "Batch request with country localization",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 63499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 96,
+            "name": "I have the names \"maria,carlos\"",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:70"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 994799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 97,
+            "name": "I have the country \"BR\"",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:85"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 423299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 98,
+            "name": "I send a GET request to the Agify API",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:147"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 251722999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 99,
+            "name": "the response status should be 200",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:161"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 308699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 100,
+            "name": "the response should be an array",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:193"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 144000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 101,
+            "name": "each item should contain a name and age",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:198"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 313600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 102,
+            "name": "each item should contain a country",
+            "match": {
+              "location": "tests\\step_definitions\\agify.steps.ts:211"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 358299
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "estimate-age-by-name-using-agify-api",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Estimate age by name using Agify API",
+    "tags": [],
+    "uri": "tests\\features\\agify.feature"
+  }
+]

@@ -4,7 +4,11 @@
   "description": "Create BDD scenarios and step definitions to test agify.io",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cucumber-js",
+    "test:mock": "SET USE_MOCK=true&& cucumber-js",
+    "test:report": "cucumber-js --format progress-bar --format @cucumber/pretty-formatter --format json:reports/cucumber-report.json --format html:reports/cucumber-report.html",
+    "prepublishOnly": "npm run build",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -20,7 +24,13 @@
   "homepage": "https://github.com/BehrangBina/KaluzaPOC#readme",
   "devDependencies": {
     "@cucumber/cucumber": "^11.3.0",
+    "@cucumber/pretty-formatter": "^1.0.1",
+    "@types/chai": "^4.3.20",
     "@types/node": "^24.0.10",
+    "chai": "^4.5.0",
+    "nock": "^13.5.6",
+    "pino": "^9.5.0",
+    "pino-pretty": "^13.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   },
