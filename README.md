@@ -2,7 +2,7 @@
 
 Hey there! Welcome to our project. We've built a simple but powerful tool to automatically test a fun public API called [Agify.io](https://agify.io/documentation).
 
-### So, what's an API?
+## So, what's an API?
 
 Imagine you're at a restaurant. You don't go into the kitchen to cook your food, right? You give your order to a waiter (the API), who takes it to the kitchen, and then brings the food back to you.
 
@@ -13,6 +13,7 @@ An API (Application Programming Interface) is just like that waiter. It's a way 
 This project automatically tests the Agify API to make sure it's working correctly. Think of it like having a robot that goes to the restaurant every day and orders the same meals to make sure the kitchen is still working properly.
 
 **What you'll need:**
+
 * A little program called Node.js. If you don't have it, you can [download it from the official website](https://nodejs.org/).
 
 **Installation Steps:**
@@ -29,9 +30,10 @@ We've set up three different ways to run our tests:
 ### Option 1: Testing with a Mock Server (Recommended for Development)
 
 This is like having a pretend restaurant that always gives you the same food, no matter what you order. It's great for testing because:
-- It's super fast
-- It doesn't use up your daily API requests
-- It works even when you don't have internet
+
+* It's super fast
+* It doesn't use up your daily API requests
+* It works even when you don't have internet
 
 To run the tests against the mock server:
 
@@ -49,15 +51,15 @@ To run the tests against the live API:
 npm run test
 ```
 
-### Option 3: Viewing a Test Report
+### Option 3: Viewing an Allure Report
 
-If you want a nice, visual report of the test results that you can open in a web browser, you can run this command:
+Generate the beautiful Allure HTML report with:
 
 ```bash
-npm run test:report
+npm run report:allure
 ```
 
-This will create a new `cucumber-report.html` file inside the `reports/` folder. Just open that file in your browser to see a clean summary of which tests passed and which failed.
+This command converts the raw files in `allure-results/` into a full HTML dashboard inside `allure-report/`.  Open `allure-report/index.html` in your browser to explore results, drill into steps, and view logs or attachments.
 
 ## Automating Tests with GitHub Actions
 
@@ -68,11 +70,12 @@ Here's what's already configured in your project:
 ### What Happens Automatically
 
 Every time you push code to GitHub, our system will:
-1. **Set up a clean testing environment** - Like getting a fresh computer just for testing
-2. **Install all the necessary tools** - All the helper programs we need
-3. **Run all your tests using the mock server** - Fast and reliable testing
-4. **Generate a beautiful HTML report** - Easy to read results
-5. **Save the results** - You can download the reports later if needed
+
+1. **Set up a clean testing environment** * Like getting a fresh computer just for testing
+2. **Install all the necessary tools** * All the helper programs we need
+3. **Run all your tests using the mock server** * Fast and reliable testing
+4. **Generate a beautiful HTML report** * Easy to read results
+5. **Save the results** * You can download the reports later if needed
 
 ### How to See the Results
 
@@ -87,31 +90,35 @@ Every time you push code to GitHub, our system will:
 Our test suite covers a comprehensive range of scenarios:
 
 **Basic Functionality:**
-- ✅ Valid names return age estimates
-- ✅ Names with numbers are handled correctly
-- ✅ Names with special characters (like "José") work properly
+
+* Valid names return age estimates
+* Names with numbers are handled correctly
+* Names with special characters (like "José") work properly
 
 **Advanced Features:**
-- ✅ Country-specific results (like "Peter" in the US vs UK)
-- ✅ Batch requests (testing multiple names at once)
-- ✅ Authentication with API keys
+
+* Country*specific results (like "Peter" in the US vs UK)
+* Batch requests (testing multiple names at once)
+* Authentication with API keys
 
 **Error Handling:**
-- ✅ Missing name parameters
-- ✅ Invalid API keys
-- ✅ Rate limit exceeded scenarios
-- ✅ Too many names in a batch request
+
+* Missing name parameters
+* Invalid API keys
+* Rate limit exceeded scenarios
+* Too many names in a batch request
 
 **Edge Cases:**
-- ✅ Empty requests
-- ✅ Very long names
-- ✅ Special characters and diacritics
+
+* Empty requests
+* Very long names
+* Special characters and diacritics
 
 ## Project Structure
 
 Here's how the project is organized:
 
-```
+```text
 KaluzaPOC/
 ├── tests/
 │   ├── features/
@@ -137,25 +144,26 @@ KaluzaPOC/
 
 When you run the tests, you'll see output that looks something like this:
 
-```
-✅ Valid name returns estimated age
-✅ Name with numbers returns an error or default
-✅ Name with diacritics is handled correctly
-❌ Exceeding rate limit returns error
+```text
+ Valid name returns estimated age
+ Name with numbers returns an error or default
+ Name with diacritics is handled correctly
+ Exceeding rate limit returns error
 ```
 
-- ✅ **Green checkmarks** mean the test passed
-- ❌ **Red X marks** mean the test failed
-- The descriptions tell you exactly what each test was checking
+* **Green checkmarks** mean the test passed
+* **Red X marks** mean the test failed
+* The descriptions tell you exactly what each test was checking
 
 ## Troubleshooting
 
 **"Command not found" errors:** Make sure you have Node.js installed and you're in the right folder.
 
 **Tests failing unexpectedly:** Try running `npm run test:mock` first. If mock tests pass but real API tests fail, it might be because:
-- Your internet connection is slow
-- The API is temporarily down
-- You've hit the daily rate limit
+
+* Your internet connection is slow
+* The API is temporarily down
+* You've hit the daily rate limit
 
 **No test report generated:** Make sure you have a `reports/` folder in your project. The system should create it automatically, but you can create it manually if needed.
 
@@ -173,10 +181,8 @@ The beauty of this system is that it's designed to be readable by anyone, even i
 ## Need Help?
 
 If you get stuck, remember:
-- The mock tests should always pass (they're testing our fake API)
-- The real API tests might occasionally fail due to network issues
-- Check the GitHub Actions tab to see automated test results
-- The HTML reports give you detailed information about what went wrong
 
-Happy testing! 🚀
-
+* The mock tests should always pass (they're testing our fake API)
+* The real API tests might occasionally fail due to network issues
+* Check the GitHub Actions tab to see automated test results
+* The HTML reports give you detailed information about what went wrong
