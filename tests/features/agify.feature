@@ -84,6 +84,14 @@ Feature: Estimate age by name using Agify API
     And the response should contain a name "René"
     And the response should contain an age
 
+  Scenario: Batch request with country localization
+    Given I have multiple names "michael,sofia"
+    And I specify country "US"
+    When I send a batch GET request to the Agify API
+    Then the response status should be 200
+    And the response should be an array of 2 predictions
+    And each prediction should have a country_id "US"
+
   # Rate limiting test
   Scenario: Exceeding rate limit returns error
     Given I have the name "test"

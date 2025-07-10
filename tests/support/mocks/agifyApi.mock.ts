@@ -94,4 +94,17 @@ export function mockNameWithDiacritics() {
 
 export function mockRateLimitExceeded() {
   return mockError({ name: 'test' }, 'Request limit reached', 429);
+}
+
+export function mockBatchWithCountry() {
+  const names = ['michael', 'sofia'];
+  const query = { 'name[]': names, country_id: 'US' };
+  const response = [
+    { name: 'michael', age: 45, count: 54321, country_id: 'US' },
+    { name: 'sofia', age: 30, count: 9876, country_id: 'US' }
+  ];
+  return nock(API_URL)
+    .get('/')
+    .query(query)
+    .reply(200, response);
 } 

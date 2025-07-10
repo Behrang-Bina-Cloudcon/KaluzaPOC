@@ -22,7 +22,8 @@ import {
   mockBatchTooLarge,
   mockEmptyBatchRequest,
   mockNameWithDiacritics,
-  mockRateLimitExceeded
+  mockRateLimitExceeded,
+  mockBatchWithCountry
 } from '../support/mocks/agifyApi.mock';
 
 let response: ApiResponse;
@@ -74,8 +75,12 @@ Given('I have an empty name {string}', function (inputName: string) {
 
 Given('I specify country {string}', function (country: string) {
     this.country = country;
-    if (process.env.USE_MOCK === 'true' && this.name === 'michael') {
-      mockNameWithCountry();
+    if (process.env.USE_MOCK === 'true') {
+      if (this.name === 'michael') {
+        mockNameWithCountry();
+      } else if (this.names) {
+        mockBatchWithCountry();
+      }
     }
 });
 
@@ -83,7 +88,7 @@ Given('I have multiple names {string}', function (namesList: string) {
     this.names = namesList.split(',').map(name => name.trim());
     this.name = undefined;
     this.country = undefined;
-    if (process.env.USE_MOCK === 'true') {
+    if (process.env.USE_MOCK === 'true' && !this.country) {
       mockBatchRequest();
     }
 });
@@ -134,7 +139,7 @@ When('I send a GET request to the Agify API', async function () {
 
 When('I send a batch GET request to the Agify API', async function () {
     if (this.names && Array.isArray(this.names)) {
-        response = await getEstimatedAgeForMultipleNames(this.names);
+        response = await getEstimatedAgeForMultipleNames(this.names, this.country);
     } else {
         throw new Error('No names array provided for batch request');
     }
@@ -207,6 +212,15 @@ Then('each prediction should contain name and age', function () {
         );
         expect(prediction.count).to.be.a('number');
     });
+});
+
+Then('each prediction should have a country_id {string}', function (countryId: string) {
+  expect(response.data).to.be.an('array');
+  const predictions = response.data as AgifyResponse[];
+
+  predictions.forEach((prediction) => {
+    expect(prediction).to.have.property('country_id', countryId);
+  });
 });
 
 // Then steps for rate limiting

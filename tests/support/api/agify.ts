@@ -68,10 +68,14 @@ export async function getEstimatedAge(
 }
 
 export async function getEstimatedAgeForMultipleNames(
-  names: string[]
+  names: string[],
+  countryId?: string
 ): Promise<ApiResponse> {
   try {
-    const params = names.map(name => `name[]=${encodeURIComponent(name)}`).join('&');
+    let params = names.map(name => `name[]=${encodeURIComponent(name)}`).join('&');
+    if (countryId) {
+      params += `&country_id=${countryId}`;
+    }
     const url = params ? `${BASE_URL}?${params}` : BASE_URL;
     const response = await axios.get(url);
     
